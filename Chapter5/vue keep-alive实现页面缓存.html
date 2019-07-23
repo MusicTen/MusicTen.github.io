@@ -1,0 +1,912 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>keep-alive实现页面缓存 · MusicTen 知识汇总</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="MusicTen">
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="vue v-once指令.html" />
+    
+    
+    <link rel="prev" href="vue  .sync 修饰符.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" >
+            
+                <a target="_blank" href="https://github.com/MusicTen">
+            
+                    
+                    MusicTen
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../Chapter1/">
+            
+                <a href="../Chapter1/">
+            
+                    
+                    第一章 HTML
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../Chapter2/">
+            
+                <a href="../Chapter2/">
+            
+                    
+                    第二章 CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.3.1" data-path="../Chapter2/CSS 页面导入样式时，使用link和@import有什么区别.html">
+            
+                <a href="../Chapter2/CSS 页面导入样式时，使用link和@import有什么区别.html">
+            
+                    
+                    页面导入样式时，使用link和@import有什么区别
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3.2" data-path="../Chapter2/CSS Sass、LESS 和 Stylus.html">
+            
+                <a href="../Chapter2/CSS Sass、LESS 和 Stylus.html">
+            
+                    
+                    Sass、LESS 和 Stylus
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../Chapter3/">
+            
+                <a href="../Chapter3/">
+            
+                    
+                    第三章 JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.4.1" data-path="../Chapter3/JavaScript this指向.html">
+            
+                <a href="../Chapter3/JavaScript this指向.html">
+            
+                    
+                    this指向
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.2" data-path="../Chapter3/JavaScript中的call,apply和bind.html">
+            
+                <a href="../Chapter3/JavaScript中的call,apply和bind.html">
+            
+                    
+                    call,apply和bind
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.3" data-path="../Chapter3/JavaScript 闭包.html">
+            
+                <a href="../Chapter3/JavaScript 闭包.html">
+            
+                    
+                    闭包
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.4" data-path="../Chapter3/JavaScript 浅拷贝与深拷贝.html">
+            
+                <a href="../Chapter3/JavaScript 浅拷贝与深拷贝.html">
+            
+                    
+                    浅拷贝与深拷贝
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.5" data-path="../Chapter3/JavaScript 数组操作.html">
+            
+                <a href="../Chapter3/JavaScript 数组操作.html">
+            
+                    
+                    数组操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.6" data-path="../Chapter3/JavaScript 数组去重.html">
+            
+                <a href="../Chapter3/JavaScript 数组去重.html">
+            
+                    
+                    数组去重
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4.7" data-path="../Chapter3/JavaScript 字符串操作.html">
+            
+                <a href="../Chapter3/JavaScript 字符串操作.html">
+            
+                    
+                    字符串操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../Chapter4/">
+            
+                <a href="../Chapter4/">
+            
+                    
+                    第四章 ES6
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.5.1" data-path="../Chapter4/初学 Babel 工作原理.html">
+            
+                <a href="../Chapter4/初学 Babel 工作原理.html">
+            
+                    
+                    初学 Babel 工作原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5.2" data-path="../Chapter4/模块化、组件化+AMD、CMD.html">
+            
+                <a href="../Chapter4/模块化、组件化+AMD、CMD.html">
+            
+                    
+                    模块化、组件化+AMD、CMD
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    第五章 vue
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.6.1" data-path="vue  .sync 修饰符.html">
+            
+                <a href="vue  .sync 修饰符.html">
+            
+                    
+                    .sync 修饰符
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.6.2" data-path="vue keep-alive实现页面缓存.html">
+            
+                <a href="vue keep-alive实现页面缓存.html">
+            
+                    
+                    keep-alive实现页面缓存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.3" data-path="vue v-once指令.html">
+            
+                <a href="vue v-once指令.html">
+            
+                    
+                    v-once指令
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.4" data-path="vue 弹窗屏蔽滑动的两种解决方案.html">
+            
+                <a href="vue 弹窗屏蔽滑动的两种解决方案.html">
+            
+                    
+                    弹窗屏蔽滑动的两种解决方案
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.5" data-path="vue 刷新组件-$nextTick、$forceUpdate.html">
+            
+                <a href="vue 刷新组件-$nextTick、$forceUpdate.html">
+            
+                    
+                    刷新组件-$nextTick、$forceUpdate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.6" data-path="vue 双向绑定原理.html">
+            
+                <a href="vue 双向绑定原理.html">
+            
+                    
+                    双向绑定原理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.7" data-path="vue 页面权限控制和登陆验证.html">
+            
+                <a href="vue 页面权限控制和登陆验证.html">
+            
+                    
+                    页面权限控制和登陆验证
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.8" data-path="vue 组件通信-eventBus.html">
+            
+                <a href="vue 组件通信-eventBus.html">
+            
+                    
+                    组件通信-eventBus
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6.9" data-path="vue 组件通信-inheritAttrs、$attrs和$listeners.html">
+            
+                <a href="vue 组件通信-inheritAttrs、$attrs和$listeners.html">
+            
+                    
+                    组件通信-inheritAttrs、$attrs和$listeners
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7" data-path="../Chapter6/">
+            
+                <a href="../Chapter6/">
+            
+                    
+                    第六章 react
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.7.1" data-path="../Chapter6/react jsx.html">
+            
+                <a href="../Chapter6/react jsx.html">
+            
+                    
+                    jsx
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.7.2" data-path="../Chapter6/react 全家桶介绍.html">
+            
+                <a href="../Chapter6/react 全家桶介绍.html">
+            
+                    
+                    全家桶介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8" data-path="../Chapter7/">
+            
+                <a href="../Chapter7/">
+            
+                    
+                    第七章 插件
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.8.1" data-path="../Chapter7/动画库-lottie-web.html">
+            
+                <a href="../Chapter7/动画库-lottie-web.html">
+            
+                    
+                    动画库-lottie-web
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.8.2" data-path="../Chapter7/视频播放-ckplayer、videoJs.html">
+            
+                <a href="../Chapter7/视频播放-ckplayer、videoJs.html">
+            
+                    
+                    视频播放-ckplayer、videoJs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.9" data-path="../Chapter8/">
+            
+                <a href="../Chapter8/">
+            
+                    
+                    第八章 例子
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10" data-path="../Chapter9/">
+            
+                <a href="../Chapter9/">
+            
+                    
+                    第九章 面试
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.10.1" data-path="../Chapter9/面试题汇总.html">
+            
+                <a href="../Chapter9/面试题汇总.html">
+            
+                    
+                    面试题汇总
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.2" data-path="../Chapter9/节流与防抖.html">
+            
+                <a href="../Chapter9/节流与防抖.html">
+            
+                    
+                    节流与防抖
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.3" data-path="../Chapter9/script标签defer、async.html">
+            
+                <a href="../Chapter9/script标签defer、async.html">
+            
+                    
+                    script标签defer、async
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.10.4" data-path="../Chapter9/HTTP 的15个常见知识点复习.html">
+            
+                <a href="../Chapter9/HTTP 的15个常见知识点复习.html">
+            
+                    
+                    HTTP 的15个常见知识点复习
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >keep-alive实现页面缓存</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="vue-keep-alive&#x5B9E;&#x73B0;&#x9875;&#x9762;&#x7F13;&#x5B58;">Vue keep-alive&#x5B9E;&#x73B0;&#x9875;&#x9762;&#x7F13;&#x5B58;</h1>
+<p>&#x9996;&#x5148;keep-alive&#x662F;vue&#x5185;&#x7F6E;&#x7684;&#x7EC4;&#x4EF6;&#x4E4B;&#x4E00;</p>
+<p>&#x5728;&#x6A21;&#x677F;&#x4E2D;&#x6709;<strong>&#x4E24;&#x79CD;&#x573A;&#x666F;</strong>&#x53EF;&#x4EE5;&#x4F7F;&#x7528;&#xFF1A;</p>
+<p>1&#x3001;&#x5728; <router-view>&#x5916;&#x9762;&#x5305;&#x62EC;</router-view></p>
+<p>2&#x3001;&#x5728;&#x7EC4;&#x4EF6;&#x5916;&#x9762;&#x5305;&#x62EC; &#xFF08;&#x5982; <keep-alive> <edit></edit> &lt;/keep-live&gt;&#xFF09;</keep-alive></p>
+<p>&#x6DFB;&#x52A0;&#x5B8C;&#x540E;&#xFF0C;&#x9ED8;&#x8BA4;&#x91CC;&#x9762;&#x7684;&#x4E00;&#x5207;&#x9875;&#x9762;/&#x7EC4;&#x4EF6;&#x90FD;&#x4F1A;&#x88AB;&#x7F13;&#x5B58;&#xFF0C;&#x8FD9;&#x53EF;&#x80FD;&#x4E0D;&#x662F;&#x6211;&#x4EEC;&#x60F3;&#x8981;&#x7684;&#xFF0C;&#x8FD9;&#x65F6;&#x5019;&#x9700;&#x8981;&#x505A;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#x3002;</p>
+<p><strong>include/exclude</strong> &#x662F;keep-alive&#x7EC4;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#xFF0C;&#x4ECE;&#x5355;&#x8BCD;&#x4E0A;&#x5C31;&#x53EF;&#x770B;&#x51FA;&#x662F;&#x5305;&#x542B;&#x6216;&#x6392;&#x9664;&#x7684;&#x610F;&#x601D;&#xFF0C;&#x4F46;&#x662F;&#x5FC5;&#x987B;&#x8981;&#x77E5;&#x9053;&#x7EC4;&#x4EF6;&#x7684;name&#x3002;&#x63D0;&#x4F9B;3&#x79CD;&#x89C4;&#x5219;&#x5199;&#x6CD5;&#xFF0C;</p>
+<blockquote>
+<ol>
+<li><p>&#x7EC4;&#x4EF6;name&#x9017;&#x53F7;&#x5206;&#x5272;</p>
+</li>
+<li><p>&#x6570;&#x7EC4;</p>
+</li>
+<li><p>&#x6B63;&#x5219;&#x5339;&#x914D; &#x5982;&#xFF1A;/^list_/</p>
+</li>
+</ol>
+</blockquote>
+<ul>
+<li>include: &#x5B57;&#x7B26;&#x4E32;&#x6216;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x53EA;&#x6709;&#x5339;&#x914D;&#x7684;&#x7EC4;&#x4EF6;&#x4F1A;&#x88AB;&#x7F13;&#x5B58;&#x3002;</li>
+<li>exclude: &#x5B57;&#x7B26;&#x4E32;&#x6216;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#x3002;&#x4EFB;&#x4F55;&#x5339;&#x914D;&#x7684;&#x7EC4;&#x4EF6;&#x90FD;&#x4E0D;&#x4F1A;&#x88AB;&#x7F13;&#x5B58;&#x3002;</li>
+</ul>
+<h3 id="&#x5E38;&#x89C1;&#x7528;&#x6CD5;&#xFF1A;">&#x5E38;&#x89C1;&#x7528;&#x6CD5;&#xFF1A;</h3>
+<pre><code class="lang-vue">&lt;keep-alive include=&quot;test-keep-alive&quot;&gt;
+  &lt;!-- &#x5C06;&#x7F13;&#x5B58;name&#x4E3A;test-keep-alive&#x7684;&#x7EC4;&#x4EF6; --&gt;
+  &lt;component&gt;&lt;/component&gt;
+&lt;/keep-alive&gt;
+
+&lt;keep-alive include=&quot;a,b&quot;&gt;
+  &lt;!-- &#x5C06;&#x7F13;&#x5B58;name&#x4E3A;a&#x6216;&#x8005;b&#x7684;&#x7EC4;&#x4EF6;&#xFF0C;&#x7ED3;&#x5408;&#x52A8;&#x6001;&#x7EC4;&#x4EF6;&#x4F7F;&#x7528; --&gt;
+  &lt;component :is=&quot;view&quot;&gt;&lt;/component&gt;
+&lt;/keep-alive&gt;
+
+&lt;!-- &#x4F7F;&#x7528;&#x6B63;&#x5219;&#x8868;&#x8FBE;&#x5F0F;&#xFF0C;&#x9700;&#x4F7F;&#x7528;v-bind --&gt;
+&lt;keep-alive :include=&quot;/a|b/&quot;&gt;
+  &lt;component :is=&quot;view&quot;&gt;&lt;/component&gt;
+&lt;/keep-alive&gt;
+
+&lt;!-- &#x52A8;&#x6001;&#x5224;&#x65AD; --&gt;
+&lt;keep-alive :include=&quot;includedComponents&quot;&gt;
+  &lt;router-view&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+
+&lt;keep-alive exclude=&quot;test-keep-alive&quot;&gt;
+  &lt;!-- &#x5C06;&#x4E0D;&#x7F13;&#x5B58;name&#x4E3A;test-keep-alive&#x7684;&#x7EC4;&#x4EF6; --&gt;
+  &lt;component&gt;&lt;/component&gt;
+&lt;/keep-alive&gt;
+</code></pre>
+<h3 id="&#x7ED3;&#x5408;router&#xFF0C;&#x7F13;&#x5B58;&#x90E8;&#x5206;&#x9875;&#x9762;">&#x7ED3;&#x5408;router&#xFF0C;&#x7F13;&#x5B58;&#x90E8;&#x5206;&#x9875;&#x9762;</h3>
+<p>&#x4F7F;&#x7528;$route.meta&#x7684;keepAlive&#x5C5E;&#x6027;&#xFF1A;</p>
+<pre><code class="lang-vue">&lt;keep-alive&gt;
+    &lt;router-view v-if=&quot;$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+&lt;/keep-alive&gt;
+&lt;router-view v-if=&quot;!$route.meta.keepAlive&quot;&gt;&lt;/router-view&gt;
+</code></pre>
+<p>&#x9700;&#x8981;&#x5728;<code>router</code>&#x4E2D;&#x8BBE;&#x7F6E;router&#x7684;&#x5143;&#x4FE1;&#x606F;meta&#xFF1A;</p>
+<pre><code class="lang-javascript"><span class="hljs-comment">//...router.js</span>
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">new</span> Router({
+  routes: [
+    {
+      path: <span class="hljs-string">&apos;/&apos;</span>,
+      name: <span class="hljs-string">&apos;Hello&apos;</span>,
+      component: Hello,
+      meta: {
+        keepAlive: <span class="hljs-literal">false</span> <span class="hljs-comment">// &#x4E0D;&#x9700;&#x8981;&#x7F13;&#x5B58;</span>
+      }
+    },
+    {
+      path: <span class="hljs-string">&apos;/page1&apos;</span>,
+      name: <span class="hljs-string">&apos;Page1&apos;</span>,
+      component: Page1,
+      meta: {
+        keepAlive: <span class="hljs-literal">true</span> <span class="hljs-comment">// &#x9700;&#x8981;&#x88AB;&#x7F13;&#x5B58;</span>
+      }
+    }
+  ]
+})
+</code></pre>
+<h3 id="&#x4F8B;&#x5B50;">&#x4F8B;&#x5B50;</h3>
+<ul>
+<li>&#x9996;&#x9875;&#x662F;A&#x9875;&#x9762;</li>
+<li>B&#x9875;&#x9762;&#x8DF3;&#x8F6C;&#x5230;A&#xFF0C;A&#x9875;&#x9762;&#x9700;&#x8981;&#x7F13;&#x5B58;</li>
+<li>C&#x9875;&#x9762;&#x8DF3;&#x8F6C;&#x5230;A&#xFF0C;A&#x9875;&#x9762;&#x4E0D;&#x9700;&#x8981;&#x88AB;&#x7F13;&#x5B58;</li>
+</ul>
+<p>&#x601D;&#x8DEF;&#x662F;&#x5728;&#x6BCF;&#x4E2A;&#x8DEF;&#x7531;&#x7684;<code>beforeRouteLeave(to, from, next)</code>&#x94A9;&#x5B50;&#x4E2D;&#x8BBE;&#x7F6E;<code>to.meta.keepAlive</code>&#xFF1A;</p>
+<p>A&#x7684;&#x8DEF;&#x7531;&#xFF1A;</p>
+<pre><code class="lang-javascript">{
+    path: <span class="hljs-string">&apos;/&apos;</span>,
+    name: <span class="hljs-string">&apos;A&apos;</span>,
+    component: A,
+    meta: {
+        keepAlive: <span class="hljs-literal">true</span> <span class="hljs-comment">// &#x9700;&#x8981;&#x88AB;&#x7F13;&#x5B58;</span>
+    }
+}
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    data() {
+        <span class="hljs-keyword">return</span> {};
+    },
+    methods: {},
+    beforeRouteLeave(to, <span class="hljs-keyword">from</span>, next) {
+         <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x7684; meta</span>
+        to.meta.keepAlive = <span class="hljs-literal">true</span>;  <span class="hljs-comment">// B &#x8DF3;&#x8F6C;&#x5230; A &#x65F6;&#xFF0C;&#x8BA9; A &#x7F13;&#x5B58;&#xFF0C;&#x5373;&#x4E0D;&#x5237;&#x65B0;</span>
+        next();
+    }
+};
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> {
+    data() {
+        <span class="hljs-keyword">return</span> {};
+    },
+    methods: {},
+    beforeRouteLeave(to, <span class="hljs-keyword">from</span>, next) {
+        <span class="hljs-comment">// &#x8BBE;&#x7F6E;&#x4E0B;&#x4E00;&#x4E2A;&#x8DEF;&#x7531;&#x7684; meta</span>
+        to.meta.keepAlive = <span class="hljs-literal">false</span>; <span class="hljs-comment">// C &#x8DF3;&#x8F6C;&#x5230; A &#x65F6;&#x8BA9; A &#x4E0D;&#x7F13;&#x5B58;&#xFF0C;&#x5373;&#x5237;&#x65B0;</span>
+        next();
+    }
+};
+</code></pre>
+<p><strong>keep-alive&#x751F;&#x547D;&#x5468;&#x671F;&#x94A9;&#x5B50;&#x51FD;&#x6570;&#xFF1A;activated&#x3001;deactivated</strong></p>
+<p>&#x4F7F;&#x7528;<code>&lt;keep-alive&gt;</code>&#x4F1A;&#x5C06;&#x6570;&#x636E;&#x4FDD;&#x7559;&#x5728;&#x5185;&#x5B58;&#x4E2D;&#xFF0C;&#x5982;&#x679C;&#x8981;&#x5728;&#x6BCF;&#x6B21;&#x8FDB;&#x5165;&#x9875;&#x9762;&#x7684;&#x65F6;&#x5019;&#x83B7;&#x53D6;&#x6700;&#x65B0;&#x7684;&#x6570;&#x636E;&#xFF0C;&#x9700;&#x8981;&#x5728;<code>activated</code>&#x9636;&#x6BB5;&#x83B7;&#x53D6;&#x6570;&#x636E;&#xFF0C;&#x627F;&#x62C5;&#x539F;&#x6765;created&#x94A9;&#x5B50;&#x4E2D;&#x83B7;&#x53D6;&#x6570;&#x636E;&#x7684;&#x4EFB;&#x52A1;&#x3002;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="vue  .sync 修饰符.html" class="navigation navigation-prev " aria-label="Previous page: .sync 修饰符">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="vue v-once指令.html" class="navigation navigation-next " aria-label="Next page: v-once指令">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"keep-alive实现页面缓存","level":"2.6.2","depth":2,"next":{"title":"v-once指令","level":"2.6.3","depth":2,"path":"Chapter5/vue v-once指令.md","ref":"Chapter5/vue v-once指令.md","articles":[]},"previous":{"title":".sync 修饰符","level":"2.6.1","depth":2,"path":"Chapter5/vue  .sync 修饰符.md","ref":"Chapter5/vue  .sync 修饰符.md","articles":[]},"dir":"ltr"},"config":{"plugins":["splitter","expandable-chapters","livereload"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"livereload":{},"splitter":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","author":"MusicTen","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"MusicTen 知识汇总","language":"zh-hans","gitbook":"3.2.3","description":"select * from learn"},"file":{"path":"Chapter5/vue keep-alive实现页面缓存.md","mtime":"2019-07-23T08:44:12.160Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-07-23T09:02:00.845Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
